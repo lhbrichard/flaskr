@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style1.css') }}">
+
+
+  <h2>Select</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+ 
+ <script src="{{url_for('static',filename='jquery-3.2.1.min.js')}}">
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+  <script>
+  $(document).ready(function(){
+      $('#myselect1').change(function(){
+           var p1=$(this).children('option:selected').val();
+           var p2=({{dic|safe}});
+            $('#myselect2').empty();
+           for(i in p2[p1]){
+            var option = $("<option>").val(encodeURI(p2[p1][i])).text(p2[p1][i]);
+             $("#myselect2").append(option);
+              }
+      });
+
+    });
+ 
+  </script>
+
+
+
+<form action="{{ url_for('select') }}" method=post role="form" style="max-width: 200px;">
+    <label for="dbname">Database Name: </label><select class="form-control" name=dbname id="myselect1" label="sds">
+    {%for dbname in dbnames%}
+      <option>{{dbname}}</option>
+    {%endfor%}
+    </select>
+    
+    <label for="tbname">Table Name:</label><select class="form-control" name=tbname id="myselect2">
+    </select>
+<dd><input id="btn-select" type=submit value=Submit>
+
+</form>
+
+
+{% endblock %}
+
+

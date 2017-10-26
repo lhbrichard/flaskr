@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"> 
+   <title>在线尝试 Bootstrap 实例</title>
+   <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">  
+   <script src="{{url_for('static',filename='jquery.min.js')}}"></script>
+   <script src="{{url_for('static',filename='bootstrap.min.js')}}"></script>
+</head>
+<body>
+
+      <h1>Hello, world!</h1>
+
+</body>
+</html>
+
+
+ <form action="{{ url_for('select') }}" method=post>
+    <dl>
+      <dt>DBName:
+      <dd><input type=text name=dbname>
+      <dt>TBName:
+      <dd><input type=text name=tbname>
+      <dd><input id="btn-select" type=submit value=Select>
+    </dl>
+  </form>
+
+
+  <script src="{{url_for('static',filename='jquery-3.2.1.min.js')}}">
+</script>
+  <script>
+  $(document).ready(function(){
+      $('#myselect1').change(function(){
+          var p1=$(this).children('option:selected').val();
+          var option = $("<option>").val(1).text("pxx");
+          $("#myselect2").append(option);
+          window.location.href='/select?dbname='+p1;
+      });
+  });
+</script>
+
+
+for(var i=0;i<tags.length;i++){
+// alert(tags[i].innerHTML);//在此不能使用jquery中的text()
+if(tags[i].getAttribute('tag') == 1){  //在此不能使用jquery中的tags[i].attr('tag')
+// alert(tags[i].innerHTML);
+con += tags[i].getAttribute('tag')+',';
+}
+}
+alert(con);
+})
+
+{% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+{% endfor %}
+
+<div>
+<button>
+    <a href="{{url_for('select')}}">返回</a>
+</button>
+</div>
+
+
+
+
+$("#change-page").bind("input propertychange",function(){
+      
+          var pnum=$("change-page").val();
+          $('#btn-change').attr("href",'/show/{{dbname}}/{{tbname}}?p='+pnum);
+            })
+
+
+{% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+
+  <img src="{{url_for('static', filename='logo.png')}}">
+
+
+background: url("/static/hero-bg-4.jpg"),url("/static/hero-bg-8.jpg") no-repeat center center fixed;
+
+
+  <div class="swiper-container">
+
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('/static/hero-bg-4.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('/static/hero-bg-8.jpg');"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+
+  </div>
+
+  <h2>Login</h2>
+
+  <form action="{{ url_for('login') }}" method=post>
+    <dl>     
+      <dd>Username   <input type=text name=username>
+      
+      <dd>Password   <input type=password name=password>
+
+      <dt><input id="btn-login" type=submit value=Submit style="width:70px;height:30px;">
+    </dl>
+  </form>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+
+
+<link rel="stylesheet" href="{{url_for('static',filename='swiper-3.4.2.min.css')}}">
+<script src="{{url_for('static',filename='swiper-3.4.2.jquery.min.js')}}"></script>
+
+      if (window.applicationCache.status == window.applicationCache.UPDATEREADY) { 
+      window.applicationCache.update(); };
+
+<script type="text/javascript">if({{long}}<=5){<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style250.css') }}">
+}else{if({{long}}<=10){<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2100.css') }}">
+}else{if({{long}}<=15){<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2200.css') }}">
+}else{<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2300.css') }}">
+}}}</script>

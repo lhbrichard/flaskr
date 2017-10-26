@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery+css3左右滑块(背景也跟随切换)</title>
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery.immersive-slider.js"></script>
+<link href='css/lanrenzhijia.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="main">
+    <div class="page_container">
+      <div id="immersive_slider">
+        <div class="slide" data-blurred="images/slide1_blurred.jpg">
+          <div class="content">
+            <h2><a href="http://www.bucketlistly.com" target="_blank">BucketListly</a></h2>
+            <p>It’s never been easier to watch YouTube on the big screen
+            Send your favorite YouTube videos from your Android phone or tablet to TV with the touch of a button. It’s easy. No wires, no setup, no nothing. Find out more here.</p>
+          </div>
+          <div class="image"> <a href="#" target="_blank"> <img src="images/slide1.jpg" alt="Slider 1"> </a> </div>
+        </div>
+        <div class="slide" data-blurred="images/slide2_blurred.jpg">
+          <div class="content">
+            <h2><a href="#" target="_blank">BucketListly Apps</a></h2>
+            <p>It’s never been easier to watch YouTube on the big screen
+            Send your favorite YouTube videos from your Android phone or tablet to TV with the touch of a button. It’s easy. No wires, no setup, no nothing. Find out more here.</p>
+          </div>
+          <div class="image"> <a href="#" target="_blank"> <img src="images/slide2.jpg" alt="Slider 1"></a> </div>
+        </div>
+        <div class="slide" data-blurred="images/slide3_blurred.jpg">
+          <div class="content">
+            <h2><a href="http://www.thepetedesign.com" target="_blank">The Pete Design</a></h2>
+            <p>It’s never been easier to watch YouTube on the big screen
+            Send your favorite YouTube videos from your Android phone or tablet to TV with the touch of a button. It’s easy. No wires, no setup, no nothing. Find out more here.</p>
+          </div>
+          <div class="image"> <a href="#" target="_blank"><img src="images/slide3.jpg" alt="Slider 1"></a> </div>
+        </div>
+        <a href="#" class="is-prev">&laquo;</a> <a href="#" class="is-next">&raquo;</a> </div>
+    </div>
+  </div>
+  <div class="benefits">
+    <div class="page_container"> </div>
+  </div>
+  <script>
+  	  $(document).ready( function() {
+  	    $("#immersive_slider").immersive_slider({
+  	      container: ".main"
+  	    });
+  	  });
+
+    </script>
+</div>
+</body>
+</html>

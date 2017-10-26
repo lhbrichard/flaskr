@@ -1,0 +1,38 @@
+<head>
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate"> 
+<meta http-equiv="expires" content="0">
+</head>
+<title>Mobike</title>
+<div class=page >
+			<h1>Mobike</h1>
+
+				<div class=metanav>
+				{%if session.logged_in%}
+					<button style="width:150px;height:60px;">
+					<a href="{{url_for('logout')}}">Sign Out</a>
+					</button>
+				{%endif%}
+				</div> 
+	{% block body %}{%endblock%}
+
+</div>
+
+
+<meta charset="utf-8"> 
+
+<script src="{{url_for('static',filename='jquery-3.2.1.min.js')}}"></script>
+<script>
+	$(document).ready(function(){
+		var flash={{get_flashed_messages()|safe}};
+		function a(){alert(flash);};
+		if(flash=="登陆成功!"|flash=="退出成功!"){a();}
+	});
+</script>
+<script src="{{url_for('static',filename='bootstrap.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}"> 
+
+
+
+
+

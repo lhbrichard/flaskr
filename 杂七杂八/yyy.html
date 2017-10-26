@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="{{url_for('static',filename='jquery-3.2.1.min.js')}}" ></script>
+        <script>
+            $(function(){
+                //姑且当你的数据是这样的
+                var data = {1:["苹果","橘子","香蕉"], 2:["黄瓜","韭菜","萝卜"]};
+                $(".father").on("change", function(){
+                    var category = $(this).val();
+                    var $detail = $(".detail"); 
+                    $detail.empty();
+                    if(category){//选了具体的种类才改变下面的 选择框的值
+                        $.each(data[category], function(){
+                            //把具体的种类追加到第二个下拉框
+                            $('<option> ' + this+'</option>').appendTo($detail);
+                        });
+                    }else {
+                        $('<option>--请选择--</option>').appendTo($detail);
+                    }
+                });
+                 
+            });
+        </script>
+    </head>
+    <body>
+        <select class="father">
+            <option value="">-choose-</option>
+            <option value="1">水果</option>
+            <option value="2"> 蔬菜</option>
+        </select>
+        <br />
+        <select class="detail">
+            <option>--请选择--</option>
+        </select>
+    </body>
+</html>

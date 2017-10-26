@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block body %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2100.css') }}">
+<script type="text/javascript">window.applicationCache.update();</script>
+<META NAME="Author" CONTENT="oscar999"> 
+<script type=text/javascript src="{{url_for('static',filename='jquery-3.2.1.min.js')}}"></script>
+  <script type=text/javascript>
+  $(document).ready(function(){
+
+     	$("#btn-change").click(function(){
+     		if(isNaN($("#change-page").val())){alert("输入不是数字类型！");}
+     		else{if($("#change-page").val()<={{datas.total}}){
+		    window.location.href = '/show/{{dbname}}/{{tbname}}?p='+$("#change-page").val(); 
+		    window.event.returnValue=false;}else{alert("输入数字超过总页数！");}}
+		  });
+
+     	
+    });
+ 
+  </script>
+
+  
+  <div>
+  <table width="100%" height="100%" border="1" cellspacing="0" cellpadding="0"><caption>{{tbname}}</caption>
+  <tr>
+  {%for col in datas.col_names%}
+	<th style="width: 160px;">{{col}}</th>
+  {% endfor %}
+  </tr>
+  {% for entry in datas.entries %}
+  		<tr>
+  		{%for col in datas.col_names%}
+  			<td>{{entry[col]}}</td>
+  		{% endfor %}
+  		</tr>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </table>
+  </div>
+ 
+
+
+<div>	
+ <ul class="pagination pagination-lg">
+       {% if datas.show_shouye_status==1%}
+           <li class=''><a href='/show/{{dbname}}/{{tbname}}?p=1'>首页</a></li>
+           <li class=''><a href='/show/{{dbname}}/{{tbname}}?p={{datas.p-1}}'>上一页</a></li>
+      {%endif%}
+            
+       {% for dic in datas.dic_list %}
+           {% if dic==datas.p%}
+             <li class="active"><a href="/show/{{dbname}}/{{tbname}}?p={{dic}}">{{dic}}</a></li>
+           {%else%}
+               <li><a href="/show/{{dbname}}/{{tbname}}?p={{dic}}">{{dic}}</a></li>
+           {%endif%}
+        {%endfor%}
+
+       {% if datas.p < datas.total%}
+            <li class=''><a href='/show/{{dbname}}/{{tbname}}?p={{datas.p+1}}'>下一页</a></li>
+            <li class=''><a href='/show/{{dbname}}/{{tbname}}?p={{datas.total}}'>尾页</a></li>
+       {%endif%}
+            <strong>共{{datas.total}}页</strong>
+ </ul>
+</div>
+
+
+      <p>跳转到第<input id="change-page" type=text name=turn-page style="max-width: 150px;">页</p>
+      <button>
+      <p  id="btn-change">跳转</p>
+      </button>
+
+
+
+
+<div type="back">
+<button>
+    <a href="{{url_for('select')}}">Back</a>
+</button>
+</div>
+
+
+{% endblock %}
+
